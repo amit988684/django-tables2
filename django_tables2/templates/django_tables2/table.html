@@ -5,21 +5,8 @@
     {% block table %}
         <table {% render_attrs table.attrs %}>
             {% block table.thead %}
-            {% if table.show_header %}
-                <thead>
-                    <tr>
-                    {% for column in table.columns %}
-                        <th {{ column.attrs.th.as_html }}>
-                            {% if column.orderable %}
-                                <a href="{% querystring table.prefixed_order_by_field=column.order_by_alias.next %}">{{ column.header }}</a>
-                            {% else %}
-                                {{ column.header }}
-                            {% endif %}
-                        </th>
-                    {% endfor %}
-                    </tr>
-                </thead>
-            {% endif %}
+                   {% render_header %}
+            
             {% endblock table.thead %}
             {% block table.tbody %}
                 <tbody>
